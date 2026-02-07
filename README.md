@@ -1,23 +1,34 @@
 # HotelReservation
 Simple Hotel Room Reservation System Using JAVA JDBC
-use hotel_db
-Database changed
-mysql> desc reservations;
-+---------------+-------------+------+-----+-------------------+-------------------+
-| Field         | Type        | Null | Key | Default           | Extra             |
-+---------------+-------------+------+-----+-------------------+-------------------+
-| id            | int         | NO   | PRI | NULL              | auto_increment    |
-| customer_name | varchar(50) | YES  |     | NULL              |                   |
-| room_no       | int         | YES  |     | NULL              |                   |
-| check_in      | timestamp   | YES  |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
-+---------------+-------------+------+-----+-------------------+-------------------+
-4 rows in set (0.09 sec)
-
-mysql> select*from reservations;
-+----+---------------+---------+---------------------+
-| id | customer_name | room_no | check_in            |
-+----+---------------+---------+---------------------+
-|  1 | somu          |      12 | 2026-01-31 14:01:23 |
-|  2 | roni          |       1 | 2026-01-31 15:42:35 |
-+----+---------------+---------+---------------------+
-2 rows in set (0.02 sec)
+Database Structure – hotel_db
+This project uses a MySQL database named hotel_db.
+The main table used is reservations, which stores hotel room booking details.
+ Table: reservations
+Column Name
+Data Type
+Description
+id
+INT (PK)
+Unique reservation ID (auto-incremented)
+customer_name
+VARCHAR(50)
+Name of the customer
+room_no
+INT
+Room number assigned to the customer
+check_in
+TIMESTAMP
+Check-in date and time (defaults to current timestamp)
+ Key Information
+Primary Key: id
+The check_in field is automatically set to the current date and time when a reservation is created.
+This table supports basic hotel room reservation operations such as add, view, and delete bookings.
+SQL Table Definition
+Copy code
+Sql
+CREATE TABLE reservations (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    customer_name VARCHAR(50),
+    room_no INT,
+    check_in TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
